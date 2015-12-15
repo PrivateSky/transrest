@@ -23,24 +23,25 @@ assert.steps("CRUD test",[
                 createEntity: {
                     method: 'put',
                     params: ['token', '__body'],
-                    path : 'token=$token',
-                    code:function(token, __body){
-                        counter++;
-                        repository[counter] = __body;
-                        return true;
+                    path : '$token/entity=$entityId',
+                    code:function(entityId, __body){
+                        console.log(">>>>>>Creating:", entityId);
+                        repository[entityId] = __body;
+                        return entityId;
                     }
                 },
                 updateEntity: {
                     method: 'post',
                     params: ['entityId', 'token', '__body'],
                     path : '$entityId/$token',
-                    code:function(entityId, token){
-                        repository[counter] = __body;
-                        return true;
+                    code:function(entityId, __body){
+                        console.log(">>>>>>Updating:", entityId);
+                        repository[entityId] = __body;
+                        return entityId;
                     }
                 },
                 deleteEntity: {
-                    method: 'post',
+                    method: 'delete',
                     params: ['entityId', 'token'],
                     path : '$entityId/$token',
                     code:function(entityId, token){
@@ -51,35 +52,37 @@ assert.steps("CRUD test",[
             next();
         },
         function(next) {
-            client.get("http://localhost:3000/100/100", function (res, err) {
-                assert.equal(err, null);
+            client.get("http://localhost:3000/100/secret", function (err, res) {
+                assert.equal(err, undefined);
                 assert.equal(res, "undefined");
                 next();
             })
         },
         function(next) {
-            client.putJSON("http://localhost/100/100", {hello: "world"}, function (res, err) {
+            client.putObject("http://localhost:3000/secret/entity=100", {hello: "world"}, function (err, res) {
+
                 assert.equal(err, null);
                 assert.equal(res, "true");
                 next();
             })
         },
         function(next) {
-            client.postJSON("http://localhost/100/100", {hello: "swarms"}, function (res, err) {
+            client.postObject("http://localhost:3000/100/secret", {hello: "swarms"}, function (err, res) {
+                console.log(">>>>", err,res);
                 assert.equal(err, null);
                 assert.equal(res, "true");
                 next();
             })
         },
         function(next) {
-            client.getJSON("http://localhost/100/100", function (res, err) {
+            client.getJSON("http://localhost:3000/100/secret", function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res.hello, "swarms");
                 next();
             })
         },
         function(next) {
-            client.getJSON("http://localhost/100/100", function (res, err) {
+            client.getJSON("http://localhost:3000/100/secret", function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res.hello, "swarms");
                 next();
