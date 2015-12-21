@@ -1,12 +1,10 @@
 # transrest
 SwarmESB transformation support. 
-We found that we need to implement 3 types of transformations:
+We found that we need to implement 4 types of transformations:
 - type A: REST service towards a processing node (Swarm ESB adapter) 
-- type B: REST Service towards a workflow (swarm description/script) 
-- type C: expose a swarm workflow as a REST web service
-
-
-- type R (for tests mainly): expose functions as REST web APIs
+- type B: REST Service towards a workflow (swarm description/script)  
+- type C: expose a swarm workflow as a REST web service              
+- type R (for tests mainly): expose functions as REST web APIs        
 
 
 Conventions:

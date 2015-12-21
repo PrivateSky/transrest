@@ -5,7 +5,6 @@ var assert = require("semantic-firewall").assert;
 var client = t.createRestClient();
 
 var repository  = {};
-var counter = 0;
 
 
 assert.steps("CRUD test",[
@@ -92,3 +91,5 @@ assert.steps("CRUD test",[
                 next();
             })
         }]);
+
+assert.end();
