@@ -50,7 +50,6 @@ assert.steps("Testing type A transformation",[
                 params: ['entityId', 'token'],
                 path:'/$entityId/$token',
                 code:function(entityId, token){
-                    console.log("Retrive entity", entityId,":", repository[entityId]);
                     return repository[entityId];
                 }
             },
@@ -59,7 +58,6 @@ assert.steps("Testing type A transformation",[
                 params: ['entityId', 'token', '__body'],
                 path : '/?id=$entityId&token=$token',
                 code:function(entityId, token, __body){
-                    console.log("Create:", entityId, token, __body);
                     repository[entityId] = __body;
                     return entityId;
                 }
@@ -84,7 +82,7 @@ assert.steps("Testing type A transformation",[
         next();
     },
     function(next){
-        proxy.createEntity(100, "secret", "content", function(err, res){
+        proxy.createEntity(100, "secret", 'content', function(err, res){
             assert.equal(err, null);
             assert.equal(res, '100');
             next();
@@ -92,14 +90,12 @@ assert.steps("Testing type A transformation",[
     },
     function(next){
         proxy.getEntity(100,"secret",function(err, res){
-            console.log(err, res);
             assert.equal(err, null);
             assert.equal(res, "content");
             next();
         });
     }
     ]);
-
 
 
 assert.end();
