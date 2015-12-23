@@ -66,7 +66,7 @@ assert.steps("Testing type A transformation",[
         next();
     },
     function(next){
-        proxy = t.A({
+        proxy = t.sf({
             baseUrl:	'http://localhost:3000',
             getEntity: {
                 method:'get',

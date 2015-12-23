@@ -64,10 +64,9 @@ startSwarm = function (swarmingName, ctorName) {
 }
 
 
-assert.steps("B transformation test ",[
+assert.steps("CS transformation test ",[
     function(next) {
-        var webServer = t.B({
-
+        var webServer = t.cs({
             port:3000,
             getEntity: {
                 method:'get',
