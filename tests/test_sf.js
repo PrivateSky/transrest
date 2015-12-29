@@ -1,4 +1,8 @@
+/*
+    Status: stable
+    TODOs:
 
+*/
 
 var t = require("../lib/transformation.js");
 var assert = require("semantic-firewall").assert;
@@ -41,7 +45,7 @@ var proxy = null;
 
 var repository  = {};
 
-assert.steps("Testing type A transformation",[
+assert.steps("Testing type SF (Service to Function) transformation",[
     function(next) {
         var webServer = t.restAPI({
             port:3000,

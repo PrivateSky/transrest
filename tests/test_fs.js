@@ -1,4 +1,8 @@
+/*
+ Status: stable
+ TODOs:
 
+ */
 
 var t = require("../lib/transformation.js");
 var assert = require("semantic-firewall").assert;
@@ -7,7 +11,7 @@ var client = t.createRestClient();
 var repository  = {};
 
 
-assert.steps("CRUD test",[
+assert.steps("CRUD test for file to service (FS) transformation",[
         function(next) {
             var webServer = t.restAPI({
                 port:3000,

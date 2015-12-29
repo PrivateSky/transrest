@@ -1,4 +1,8 @@
+/*
+ Status: stable
+ TODOs:
 
+ */
 
 var t = require("../lib/transformation.js");
 var assert = require("semantic-firewall").assert;
@@ -64,7 +68,7 @@ startSwarm = function (swarmingName, ctorName) {
 }
 
 
-assert.steps("CS transformation test ",[
+assert.steps("CS (Choreography to Service) transformation test ",[
     function(next) {
         var webServer = t.cs({
             port:3000,

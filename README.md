@@ -1,5 +1,6 @@
 # transrest
-SwarmESB transformation support. 
+SwarmESB transformation support to transform  
+ 
 We found that we need to implement 4 types of transformations:
 - type SF: Service to Functions: transform a REST service to functions usable in a processing node (eg Swarm ESB adapter) 
 - type SC: Service to Choreography:  transform a REST Service towards a workflow/choreography (swarm description/script) based on an existing template
@@ -28,23 +29,24 @@ Conventions:
           
              			 
 //SC transformation example. For detailed example of each transformation type, check the tests
-transformation({	
-	swarmName: 	“EntityManagerFlow”,
-	swarmTemplate:	”example.js”,
-	node:		”EntityManager”,
-	baseUrl:	"http://localhost/service.php"
-	getEntity: {
-			method:"get",			
-			params: [“entity”, “token”]
-			path:"/$entity/$token",
-            after:"afterGetEntity"			
-			},
-	createEntity: {
-			method: put,
-			params: [“entity”, “token”, “__body”]
-			path : "id=$entity&token=$token",			
-			after:"/afterCreateEntity"
-			},
-} )
+        
+        {	
+            swarmName: 	“EntityManagerFlow”,
+            swarmTemplate:	”example.js”,
+            node:		”EntityManager”,
+            baseUrl:	"http://localhost/service.php"
+            getEntity: {
+                    method:"get",			
+                    params: [“entity”, “token”]
+                    path:"/$entity/$token",
+                    after:"afterGetEntity"			
+                    },
+            createEntity: {
+                    method: put,
+                    params: [“entity”, “token”, “__body”]
+                    path : "id=$entity&token=$token",			
+                    after:"/afterCreateEntity"
+                    },
+        }
 
 
