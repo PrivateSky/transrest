@@ -70,7 +70,7 @@ assert.steps("Testing type SF (Service to Function) transformation",[
         next();
     },
     function(next){
-        proxy = t.sf({
+        proxy = t.proxy({
             baseUrl:	'http://localhost:3000',
             getEntity: {
                 method:'get',
