@@ -26,10 +26,10 @@ swarmDesc.addPhase();
 var t = require("../lib/transformation.js");
 var assert = require("double-check").assert;
 var client = t.createRestClient();
+var fs = require("./lib/fakeSwarm.js");
 
-var repository  = {};
 
-assert.steps("SC (Service to Choreography) transformation test ",[
+assert.steps("Interceptor transformation test ",[
     function(next) {
         var webServer = t.restAPI({
             port:3000,
@@ -73,10 +73,11 @@ assert.steps("SC (Service to Choreography) transformation test ",[
     },
 
     function(next) {
-        t.proxy({
+        t.interceptor({
             baseUrl:	'http://localhost:3000',
             port:   "3001",
             swarm: "intercept.js",
+            adapter: "SWTransformer",
             getEntity: {
                 method:'get',
                 params: ['entityId', 'token'],
