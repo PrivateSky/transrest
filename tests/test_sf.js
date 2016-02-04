@@ -5,7 +5,7 @@
 */
 
 var t = require("../lib/transformation.js");
-var assert = require("semantic-firewall").assert;
+var assert = require("double-check").assert;
 
 var testStrategy= {
     begin:function(){},

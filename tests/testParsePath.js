@@ -1,7 +1,7 @@
 
 
 var parser = require("../lib/parsePath.js");
-var assert = require("semantic-firewall").assert;
+var assert = require("double-check").assert;
 
 
 assert.pass("Testing test/$hello/asdsadas$world", function(){
