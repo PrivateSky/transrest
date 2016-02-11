@@ -5,7 +5,7 @@
 */
 
 var t = require("../lib/transformation.js");
-var assert = require("semantic-firewall").assert;
+var assert = require("double-check").assert;
 
 var testStrategy= {
     begin:function(){},
@@ -48,7 +48,7 @@ var repository  = {};
 assert.steps("Testing type SF (Service to Function) transformation",[
     function(next) {
         var webServer = t.restAPI({
-            port:3000,
+            port:3333,
             getEntity: {
                 method:'get',
                 params: ['entityId', 'token'],
@@ -70,8 +70,8 @@ assert.steps("Testing type SF (Service to Function) transformation",[
         next();
     },
     function(next){
-        proxy = t.proxy({
-            baseUrl:	'http://localhost:3000',
+        proxy = t.sf({
+            baseUrl:	'http://localhost:3333',
             getEntity: {
                 method:'get',
                 params: ['entity', 'token'],

@@ -32,7 +32,7 @@ var fs = require("./lib/fakeSwarm.js");
 assert.steps("Interceptor transformation test ",[
     function(next) {
         var webServer = t.restAPI({
-            port:3000,
+            port:3333,
             getEntity: {
                 method:'get',
                 params: ['entityId', 'token'],
@@ -74,7 +74,7 @@ assert.steps("Interceptor transformation test ",[
 
     function(next) {
         t.interceptor({
-            baseUrl:	'http://localhost:3000',
+            baseUrl:	'http://localhost:3333',
             port:   "3001",
             swarm: "intercept.js",
             adapter: "SWTransformer",

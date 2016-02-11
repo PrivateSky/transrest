@@ -55,7 +55,6 @@ function FakeSwarm(){
         var f = this[arguments[2]].bind(this);
         f(arguments[3], arguments[4], arguments[5]);
     }
-
 }
 
 startSwarm = function (swarmingName, ctorName) {
