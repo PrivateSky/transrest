@@ -1,0 +1,49 @@
+{
+  "name": "transrest",
+  "description": "SwarmESB transfromations: make transfromations between functions, web services and executable choreografies",
+  "version": "0.5.0",
+  "_id": "transrest@0.5.0",
+  "homepage": "https://github.com/salboaie/asynchron",
+  "author": {
+    "name": "Alboaie Sinica",
+    "email": "salboaie@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Alboaie Sinica",
+      "email": "salboaie@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salboaie/transrest.git"
+  },
+  "bugs": {
+    "email": "salboaie@gmail.com",
+    "url": "https://github.com/salboaie/transrest/issues"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "engines": {
+
+    "node": ">=0.6.0"
+  },
+  "main": "./lib/asynchron.js",
+  "licenses": [
+    {
+      "type": "LGPL",
+      "url": "http://www.gnu.org/licenses/lgpl.html"
+    }
+  ],
+  "dependencies" : {
+  },
+  "optionalDependencies": {},
+  "_engineSupported": true,
+  "_npmVersion": "1.1.12",
+  "_nodeVersion": "v0.10.0",
+  "_defaultsLoaded": true,
+  "dist": {
+    
+  }
+}
