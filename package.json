@@ -29,7 +29,7 @@
 
     "node": ">=0.6.0"
   },
-  "main": "./lib/asynchron.js",
+  "main": "./lib/transformations.js",
   "licenses": [
     {
       "type": "LGPL",

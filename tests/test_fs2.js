@@ -31,7 +31,10 @@ assert.steps("CRUD test for file to service (FS) transformation",[
                         repository[entityId] = __body;
                         return entityId;
                     }
-                },
+                }
+            });
+           // console.log(webServer)
+            t.restAPI({
                 updateEntity: {
                     method: 'post',
                     params: ['entityId', '__body'],
@@ -50,7 +53,8 @@ assert.steps("CRUD test for file to service (FS) transformation",[
                         return true;
                     }
                 }
-            });
+            },
+            webServer.server);
             next();
         },
         function(next) {

@@ -23,7 +23,7 @@ swarmDesc.addPhase();
 
  */
 
-var t = require("../lib/transformation.js");
+var t = require("../lib/transformations.js");
 var assert = require("double-check").assert;
 var client = t.createRestClient();
 var fs = require("./lib/fakeSwarm.js");

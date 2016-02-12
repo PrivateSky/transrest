@@ -4,7 +4,7 @@
 
 */
 
-var t = require("../lib/transformation.js");
+var t = require("../lib/transformations.js");
 var assert = require("double-check").assert;
 
 var testStrategy= {
