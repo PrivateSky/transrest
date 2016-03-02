@@ -48,7 +48,7 @@ var repository  = {};
 assert.steps("Testing type SF (Service to Function) transformation",[
     function(next) {
         var webServer = t.restAPI({
-            port:3333,
+            port:3337,
             getEntity: {
                 method:'get',
                 params: ['entityId', 'token'],
@@ -71,7 +71,7 @@ assert.steps("Testing type SF (Service to Function) transformation",[
     },
     function(next){
         proxy = t.sf({
-            baseUrl:	'http://localhost:3333',
+            baseUrl:	'http://localhost:3337',
             getEntity: {
                 method:'get',
                 params: ['entity', 'token'],

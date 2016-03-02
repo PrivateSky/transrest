@@ -14,7 +14,7 @@ var repository  = {};
 assert.steps("CRUD test for file to service (FS) transformation",[
         function(next) {
             var webServer = t.restAPI({
-                port:3333,
+                port:3335,
                 getEntity: {
                     method:'get',
                     params: ['entityId', 'token'],
@@ -58,42 +58,42 @@ assert.steps("CRUD test for file to service (FS) transformation",[
             next();
         },
         function(next) {
-            client.get("http://localhost:3333/100/secret", function (err, res) {
+            client.get("http://localhost:3335/100/secret", function (err, res) {
                 assert.equal(err, undefined);
                 assert.equal(res, "undefined");
                 next();
             })
         },
         function(next) {
-            client.putObject("http://localhost:3333/secret/100", {hello: "world"}, function (err, res) {
+            client.putObject("http://localhost:3335/secret/100", {hello: "world"}, function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res, 100);
                 next();
             })
         },
         function(next) {
-            client.postObject("http://localhost:3333/100/secret", {hello: "swarms"}, function (err, res) {
+            client.postObject("http://localhost:3335/100/secret", {hello: "swarms"}, function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res, 100);
                 next();
             })
         },
         function(next) {
-            client.getObject("http://localhost:3333/100/secret", function (err, res) {
+            client.getObject("http://localhost:3335/100/secret", function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res.hello, "swarms");
                 next();
             })
         },
         function(next) {
-            client.delete("http://localhost:3333/100/secret", function (err, res) {
+            client.delete("http://localhost:3335/100/secret", function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res, "true");
                 next();
             })
         },
         function(next) {
-            client.get("http://localhost:3333/100/secret", function (err, res) {
+            client.get("http://localhost:3335/100/secret", function (err, res) {
                 assert.equal(err, null);
                 assert.equal(res, "undefined");
                 next();

@@ -32,7 +32,7 @@ var fs = require("./lib/fakeSwarm.js");
 assert.steps("Interceptor transformation test ",[
     function(next) {
         var webServer = t.restAPI({
-            port:3333,
+            port:3336,
             getEntity: {
                 method:'get',
                 params: ['entityId', 'token'],
@@ -74,8 +74,8 @@ assert.steps("Interceptor transformation test ",[
 
     function(next) {
         t.interceptor({
-            baseUrl:	'http://localhost:3333',
-            port:   "3001",
+            baseUrl:	'http://localhost:3336',
+            port:   "30011",
             swarm: "intercept.js",
             adapter: "SWTransformer",
             getEntity: {
@@ -102,42 +102,42 @@ assert.steps("Interceptor transformation test ",[
         next();
     },
     function(next) {
-        client.get("http://localhost:3001/100/secret", function (err, res) {
+        client.get("http://localhost:30011/100/secret", function (err, res) {
             assert.equal(err, undefined);
             assert.equal(res, "undefined");
             next();
         })
     },
     function(next) {
-        client.putObject("http://localhost:3001/secret/100", {hello: "world"}, function (err, res) {
+        client.putObject("http://localhost:30011/secret/100", {hello: "world"}, function (err, res) {
             assert.equal(err, null);
             assert.equal(res, 100);
             next();
         })
     },
     function(next) {
-        client.postObject("http://localhost:3001/100/secret", {hello: "swarms"}, function (err, res) {
+        client.postObject("http://localhost:30011/100/secret", {hello: "swarms"}, function (err, res) {
             assert.equal(err, null);
             assert.equal(res, 100);
             next();
         })
     },
     function(next) {
-        client.getObject("http://localhost:3001/100/secret", function (err, res) {
+        client.getObject("http://localhost:30011/100/secret", function (err, res) {
             assert.equal(err, null);
             assert.equal(res.hello, "swarms");
             next();
         })
     },
     function(next) {
-        client.delete("http://localhost:3001/100/secret", function (err, res) {
+        client.delete("http://localhost:30011/100/secret", function (err, res) {
             assert.equal(err, null);
             assert.equal(res, "true");
             next();
         })
     },
     function(next) {
-        client.get("http://localhost:3001/100/secret", function (err, res) {
+        client.get("http://localhost:30011/100/secret", function (err, res) {
             assert.equal(err, null);
             assert.equal(res, "undefined");
             next();
