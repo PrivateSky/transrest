@@ -19,35 +19,37 @@ assert.steps("CRUD test for file to service (FS) transformation",[
                     method:'get',
                     params: ['entityId', 'token'],
                     path:'/$entityId/$token',
-                    code:function(entityId, token){
-                        return repository[entityId];
+                    code:function(entityId, token,callback){
+                        callback(null,repository[entityId])
                     }
                 },
                 createEntity: {
                     method: 'put',
                     params: ['token', 'entityId', '__body'],
                     path : '/$token/$entityId',
-                    code:function(token, entityId, __body){
+                    code:function(token, entityId, __body,callback){
                         repository[entityId] = __body;
-                        return entityId;
+                        callback(null,entityId)
                     }
                 },
                 updateEntity: {
                     method: 'post',
                     params: ['entityId', '__body'],
                     path : '/$entityId/$token',
-                    code:function(entityId, __body){
+                    code:function(entityId, __body,callback){
                         repository[entityId] = __body;
-                        return entityId;
+                        setTimeout(function(){
+                            callback(null,entityId)
+                        },100)
                     }
                 },
                 deleteEntity: {
                     method: 'delete',
                     params: ['entityId', 'token'],
                     path : '/$entityId/$token',
-                    code:function(entityId, token){
+                    code:function(entityId, token,callback){
                         delete repository[entityId];
-                        return true;
+                        callback(null,true)
                     }
                 }
             });
@@ -84,7 +86,7 @@ assert.steps("CRUD test for file to service (FS) transformation",[
         function(next) {
             client.delete("http://localhost:3334/100/secret", function (err, res) {
                 assert.equal(err, null);
-                assert.equal(res, "true");
+                assert.equal(res, 'true');
                 next();
             })
         },

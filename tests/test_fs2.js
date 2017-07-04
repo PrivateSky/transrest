@@ -19,17 +19,17 @@ assert.steps("CRUD test for file to service (FS) transformation",[
                     method:'get',
                     params: ['entityId', 'token'],
                     path:'/$entityId/$token',
-                    code:function(entityId, token){
-                        return repository[entityId];
+                    code:function(entityId, token,callback){
+                        callback(null,repository[entityId]);
                     }
                 },
                 createEntity: {
                     method: 'put',
                     params: ['token', 'entityId', '__body'],
                     path : '/$token/$entityId',
-                    code:function(token, entityId, __body){
+                    code:function(token, entityId, __body,callback){
                         repository[entityId] = __body;
-                        return entityId;
+                        callback(null,entityId);
                     }
                 }
             });
@@ -39,18 +39,18 @@ assert.steps("CRUD test for file to service (FS) transformation",[
                     method: 'post',
                     params: ['entityId', '__body'],
                     path : '/$entityId/$token',
-                    code:function(entityId, __body){
+                    code:function(entityId, __body,callback){
                         repository[entityId] = __body;
-                        return entityId;
+                        callback(null,entityId);
                     }
                 },
                 deleteEntity: {
                     method: 'delete',
                     params: ['entityId', 'token'],
                     path : '/$entityId/$token',
-                    code:function(entityId, token){
+                    code:function(entityId, token,callback){
                         delete repository[entityId];
-                        return true;
+                        callback(null,true);
                     }
                 }
             },
