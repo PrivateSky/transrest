@@ -1,8 +1,8 @@
 {
   "name": "transrest",
   "description": "SwarmESB transfromations: make transfromations between functions, web services and executable choreografies",
-  "version": "0.5.1",
-  "_id": "transrest@0.5.1",
+  "version": "0.5.2",
+  "_id": "transrest@0.5.2",
   "homepage": "https://github.com/salboaie/asynchron",
   "author": {
     "name": "Alboaie Sinica",
